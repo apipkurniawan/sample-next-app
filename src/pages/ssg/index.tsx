@@ -1,45 +1,40 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import React from 'react';
+import axios from 'axios';
+import ProductCard from '@/components/ProductCard';
 
-type Post = {
+interface Product {
   id: number;
   title: string;
-  body: string;
-};
+  description: string;
+  price: number;
+}
 
-type PostsPageProps = {
-  posts: Post[];
-};
+interface HomeProps {
+  products: Product[];
+}
 
-export const getStaticProps: GetStaticProps<PostsPageProps> = async () => {
-  // Fetch data from a mock API
-  const response = await fetch(
-    'https://jsonplaceholder.typicode.com/posts?_limit=5'
-  );
-  const posts: Post[] = await response.json();
-
-  return {
-    props: {
-      posts,
-    },
-  };
-};
-
-const PostsPage = ({
-  posts,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Home: React.FC<HomeProps> = ({ products }) => {
   return (
-    <div className='container'>
-      <h1 className='title'>Posts</h1>
-      <ul>
-        {posts.map((post) => (
-          <li key={post.id} className='post'>
-            <h2>{post.title}</h2>
-            <p>{post.body}</p>
-          </li>
+    <div className='container mx-auto p-4'>
+      <h1 className='text-2xl font-bold mb-4'>Product List</h1>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+        {products.map((product) => (
+          <ProductCard key={product.id} {...product} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
 
-export default PostsPage;
+export const getStaticProps = async () => {
+  const response = await axios.get('https://fakestoreapi.com/products');
+  const products: Product[] = response.data;
+
+  return {
+    props: {
+      products,
+    },
+  };
+};
+
+export default Home;
