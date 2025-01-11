@@ -19,10 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       <h2 className='text-lg font-bold'>{title}</h2>
       <p className='text-gray-600'>{description}</p>
       <p className='font-semibold text-green-600'>${price.toFixed(2)}</p>
-      <Link
-        href={`/products/${id}`}
-        className='text-blue-500 underline mt-2 block'
-      >
+      <Link href={`/ssg/${id}`} className='text-blue-500 underline mt-2 block'>
         View Details
       </Link>
     </div>
