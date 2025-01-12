@@ -36,7 +36,10 @@ const ProductsPage = () => {
     data: products = [],
     isLoading,
     error,
-  } = useQuery<Product[]>(['products'], fetchProducts);
+  } = useQuery<Product[]>({
+    queryKey: ['products'], // Gunakan satu objek sebagai argumen
+    queryFn: fetchProducts,
+  });
 
   if (isLoading) {
     return <p className='text-center text-xl'>Loading...</p>;
@@ -52,7 +55,7 @@ const ProductsPage = () => {
     <div className='container mx-auto px-4 py-8'>
       <h1 className='text-2xl font-bold mb-6'>Product List</h1>
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-        {(products as Product[]).map((product) => (
+        {products.map((product) => (
           <div key={product.id} className='border p-4 rounded-lg shadow-lg'>
             <Image
               src={product.image}
