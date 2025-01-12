@@ -61,30 +61,6 @@ export default function Home() {
             Read our docs
           </a>
         </div>
-
-        <div className='flex gap-4 items-center flex-col'>
-          <Image
-            className='dark:invert'
-            src='/example.jpg'
-            alt='Next.js logo'
-            width={180}
-            height={38}
-          />
-          <Image
-            className='dark:invert'
-            src='/example2.jpg'
-            alt='Next.js logo'
-            width={180}
-            height={38}
-          />
-          <Image
-            className='dark:invert'
-            src='/example3.jpg'
-            alt='Next.js logo'
-            width={180}
-            height={38}
-          />
-        </div>
       </main>
       <footer className='row-start-3 flex gap-6 flex-wrap items-center justify-center'>
         <a
