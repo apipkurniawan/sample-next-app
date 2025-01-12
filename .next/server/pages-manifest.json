@@ -3,5 +3,6 @@
   "/_document": "pages/_document.js",
   "/ssg": "pages/ssg.js",
   "/ssr": "pages/ssr.js",
-  "/_error": "pages/_error.js"
+  "/_error": "pages/_error.js",
+  "/isr": "pages/isr.js"
 }
