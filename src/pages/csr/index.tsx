@@ -11,17 +11,17 @@ type Product = {
   category: string;
 };
 
-const myLoader = ({
-  src,
-  width,
-  quality,
-}: {
-  src: string;
-  width: number;
-  quality?: number;
-}) => {
-  return `${src}?w=${width}&q=${quality || 75}`;
-};
+// const myLoader = ({
+//   src,
+//   width,
+//   quality,
+// }: {
+//   src: string;
+//   width: number;
+//   quality?: number;
+// }) => {
+//   return `${src}?w=${width}&q=${quality || 75}`;
+// };
 
 const fetchProducts = async (): Promise<Product[]> => {
   const res = await fetch('https://fakestoreapi.com/products');
@@ -65,7 +65,7 @@ const ProductsPage = () => {
               className='w-full h-40 object-cover mb-4 rounded-lg'
               width={160}
               height={160}
-              loader={myLoader}
+              // loader={myLoader}
             />
             <h2 className='text-xl font-semibold'>{product.name}</h2>
             <p className='text-gray-700'>{product.description}</p>
