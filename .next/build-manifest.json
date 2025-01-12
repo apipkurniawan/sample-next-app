@@ -9,13 +9,21 @@
       "static/chunks/src_pages__app_5771e1._.js",
       "static/chunks/src_pages__app_3aea2c._.js"
     ],
-    "/ssg/product/[id]": [
-      "static/chunks/node_modules_next_63408d._.js",
+    "/ssg": [
+      "static/chunks/node_modules_next_f80f03._.js",
       "static/chunks/node_modules_react-dom_82bb97._.js",
       "static/chunks/node_modules_1b7400._.js",
-      "static/chunks/[root of the server]__2a7751._.js",
-      "static/chunks/src_pages_ssg_product_[id]_tsx_5771e1._.js",
-      "static/chunks/src_pages_ssg_product_[id]_tsx_1d99e1._.js"
+      "static/chunks/[root of the server]__51433c._.js",
+      "static/chunks/src_pages_ssg_index_tsx_5771e1._.js",
+      "static/chunks/src_pages_ssg_index_tsx_6745ee._.js"
+    ],
+    "/ssr": [
+      "static/chunks/node_modules_next_25f03d._.js",
+      "static/chunks/node_modules_react-dom_82bb97._.js",
+      "static/chunks/node_modules_1b7400._.js",
+      "static/chunks/[root of the server]__2b6666._.js",
+      "static/chunks/src_pages_ssr_index_tsx_5771e1._.js",
+      "static/chunks/src_pages_ssr_index_tsx_360adb._.js"
     ],
     "/_error": [
       "static/chunks/[root of the server]__31723f._.js",
@@ -24,14 +32,6 @@
       "static/chunks/[root of the server]__e5d775._.js",
       "static/chunks/src_pages__error_5771e1._.js",
       "static/chunks/src_pages__error_ba917a._.js"
-    ],
-    "/ssg": [
-      "static/chunks/node_modules_next_f80f03._.js",
-      "static/chunks/node_modules_react-dom_82bb97._.js",
-      "static/chunks/node_modules_1b7400._.js",
-      "static/chunks/[root of the server]__51433c._.js",
-      "static/chunks/src_pages_ssg_index_tsx_5771e1._.js",
-      "static/chunks/src_pages_ssg_index_tsx_6745ee._.js"
     ]
   },
   "devFiles": [],

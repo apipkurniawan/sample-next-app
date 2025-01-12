@@ -1,59 +1,66 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { GetServerSideProps } from 'next';
+import Image from 'next/image';
 
-type User = {
+type Product = {
   id: number;
   name: string;
-  email: string;
+  description: string;
+  price: number;
+  image: string;
 };
 
-type UsersPageProps = {
-  users: User[];
+const myLoader = ({
+  src,
+  width,
+  quality,
+}: {
+  src: string;
+  width: number;
+  quality?: number;
+}) => {
+  return `${src}?w=${width}&q=${quality || 75}`;
 };
 
-export const getServerSideProps: GetServerSideProps<
-  UsersPageProps
-> = async () => {
-  try {
-    // Fetch data from an external API
-    const res = await fetch('https://jsonplaceholder.typicode.com/users');
-    const users: User[] = await res.json();
+interface ProductsPageProps {
+  products: Product[];
+}
 
-    return {
-      props: {
-        users,
-      },
-    };
-  } catch (err) {
-    console.log('err', err);
-    // Handle errors gracefully
-    return {
-      props: {
-        users: [],
-      },
-    };
-  }
-};
-
-const UsersPage = ({
-  users,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const ProductsPage = ({ products }: ProductsPageProps) => {
   return (
-    <div className='container'>
-      <h1 className='title'>User List</h1>
-      {users.length > 0 ? (
-        <ul>
-          {users.map((user) => (
-            <li key={user.id} className='user'>
-              <h2>{user.name}</h2>
-              <p>{user.email}</p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No users available.</p>
-      )}
+    <div className='container mx-auto px-4 py-8'>
+      <h1 className='text-2xl font-bold mb-6'>Product List</h1>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+        {products.map((product) => (
+          <div key={product.id} className='border p-4 rounded-lg shadow-lg'>
+            <Image
+              src={product.image}
+              alt={product.name}
+              className='w-full h-40 object-cover mb-4 rounded-lg'
+              width={160}
+              height={160}
+              loader={myLoader}
+            />
+            <h2 className='text-xl font-semibold'>{product.name}</h2>
+            <p className='text-gray-700'>{product.description}</p>
+            <p className='text-lg font-bold text-green-600'>${product.price}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default UsersPage;
+// Fetch products using SSR
+export const getServerSideProps: GetServerSideProps = async () => {
+  // Fetching data from a dummy API or your own backend
+  const res = await fetch('https://fakestoreapi.com/products');
+  const products = await res.json();
+
+  return {
+    props: {
+      products,
+    },
+  };
+};
+
+export default ProductsPage;
