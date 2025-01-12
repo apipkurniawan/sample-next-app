@@ -1,8 +1,1 @@
-{
-  "/_app": "pages/_app.js",
-  "/_document": "pages/_document.js",
-  "/ssg": "pages/ssg.js",
-  "/ssr": "pages/ssr.js",
-  "/_error": "pages/_error.js",
-  "/isr": "pages/isr.js"
-}
+{}
